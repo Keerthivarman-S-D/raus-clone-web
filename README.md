@@ -33,9 +33,9 @@ This project demonstrates responsive design, interactive elements, and clean sep
 
 raus-website/
 │
-├── index.html # Main page
-├── styles.css # Custom styling
-└── script.js # Interactive behavio
+├── index.html
+├── styles.css
+└── script.js
 
 ---
 
