@@ -43,4 +43,4 @@ raus-website/
 
 1. **Clone this repository**
 
-   git clone https://github.com/<your-username>/raus-website.git
+   git clone https://github.com/Keerthivarman-S-D/raus-clone-web.git
