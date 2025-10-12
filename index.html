@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAUS - Book restful space outside your daily routine</title>
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-neutral-50">
+    <!-- Promo Banner -->
+    <div id="promoBanner" class="bg-sky-300 text-center py-3 px-4 relative">
+        <span class="text-sm md:text-base text-orange-600">
+            <span class="font-semibold">Code FUNGALICIOUS:</span> Free Mushroom Bundle for the first 25 bookings (Sept 18–Oct 31)!
+        </span>
+        <button class="ml-3 bg-orange-600 text-white px-4 py-1.5 rounded-md text-sm font-medium hover:bg-orange-700">
+            Book now →
+        </button>
+        <button onclick="document.getElementById('promoBanner').style.display='none'" 
+                class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-700 hover:text-gray-900">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <img src="logo4.png" alt="rasu logo" style="width: 20;height: 400;">
+                    <!-- <div class="raus-logo select-none">RAUS</div>-->
+                    <div class="ml-2 hidden md:block">
+                        <p class="text-2xl text-green-900 font-medium text-[var(--forest)]">Book restful space outside<br/>your daily routine.</p>
+      </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="#" class="nav-link text-gray-700 hover:text-green-900 font-medium">Book a cabin</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-green-900 font-medium">Staying with us</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-green-900 font-medium">Extras & Experiences</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-green-900 font-medium">Become a host</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-green-900 font-medium">Shop</a>
+                    <button class="px-3 py-1 border border-gray-300 rounded-md text-sm">EN</button>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2">
+                    <svg id="menuIcon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <svg id="closeIcon" class="hidden" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-gray-200 py-4 px-4">
+            <nav class="flex flex-col space-y-4">
+                <a href="#" class="text-gray-700 hover:text-green-900 font-medium">Book a cabin</a>
+                <a href="#" class="text-gray-700 hover:text-green-900 font-medium">Staying with us</a>
+                <a href="#" class="text-gray-700 hover:text-green-900 font-medium">Extras & Experiences</a>
+                <a href="#" class="text-gray-700 hover:text-green-900 font-medium">Become a host</a>
+                <a href="#" class="text-gray-700 hover:text-green-900 font-medium">Shop</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Slideshow -->
+    <section class="hero-section bg-neutral-100">
+        <div class="hero-grid max-w-[1600px] mx-auto">
+            <!-- Left: Slideshow -->
+            <div class="slideshow-container hidden lg:flex">
+                <div class="slideshow-item">
+                    <img id="slide1" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&h=400&fit=crop" 
+                         alt="Forest cabin view">
+                </div>
+                <div class="slideshow-item">
+                    <img id="slide2" src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&h=400&fit=crop" 
+                         alt="Lakeside cabin">
+                </div>
+            </div>
+
+            <!-- Right: Main Hero Image -->
+            <div class="hero-main">
+                <img id="heroMain" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&h=800&fit=crop" 
+                     alt="Sunset over mountains">
+                
+                <!-- Content Overlay -->
+                <div class="hero-content">
+                    <h1 class="text-5xl md:text-7xl text-white drop-shadow-lg mb-4 max-w-2xl" style="font-weight: 400; line-height: 1.1;">
+                        Book restful space outside<br>your daily routine.
+                    </h1>
+                    <p class="text-xl text-white drop-shadow-lg max-w-xl hidden md:block" style="font-weight: 400;">
+                        Schedule appointments. But just with yourself.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <div class="bg-yellow-400 rounded-2xl p-6 shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <!-- Region -->
+                    <div>
+                        <label class="block text-xs font-semibold mb-2 uppercase">Region</label>
+                        <div class="relative">
+                            <select class="w-full bg-transparent border-b-2 border-black pb-2 pr-8 appearance-none focus:outline-none font-medium cursor-pointer">
+                                <option>All Regions</option>
+                                <option>Forest</option>
+                                <option>Lake</option>
+                                <option>Sea</option>
+                                <option>Farm</option>
+                            </select>
+                            <svg class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Arrival & Departure -->
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-semibold mb-2 uppercase">Arrival & Departure</label>
+                        <div class="flex items-center gap-4">
+                            <input type="date" 
+                                   class="flex-1 bg-transparent border-b-2 border-black pb-2 focus:outline-none font-medium">
+                            <span class="text-2xl">→</span>
+                            <input type="date" 
+                                   class="flex-1 bg-transparent border-b-2 border-black pb-2 focus:outline-none font-medium">
+                        </div>
+                    </div>
+
+                    <!-- Guests -->
+                    <div class="flex items-end gap-4">
+                        <div class="flex-1">
+                            <label class="block text-xs font-semibold mb-2 uppercase">Guests</label>
+                            <div class="relative">
+                                <select class="w-full bg-transparent border-b-2 border-black pb-2 pr-8 appearance-none focus:outline-none font-medium cursor-pointer">
+                                    <option>1 Guest</option>
+                                    <option>2 Guests</option>
+                                    <option>3 Guests</option>
+                                    <option>4 Guests</option>
+                                    <option>5+ Guests</option>
+                                </select>
+                                <svg class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <button class="bg-green-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-800 transition-colors">
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- City Break Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-neutral-100 rounded-3xl p-12 md:p-20 flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1">
+                    <h2 class="text-4xl md:text-5xl mb-6 text-gray-800" style="font-weight: 400; line-height: 1.2;">
+                        Take a break from big city life in smart cabins close to your home.
+                    </h2>
+                    <button class="bg-gray-900 text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors inline-flex items-center gap-2">
+                        Choose your cabin →
+                    </button>
+                </div>
+                <div class="flex-1">
+                    <div class="w-64 h-64 mx-auto">
+                        <svg viewBox="0 0 200 200" class="w-full h-full">
+                            <path d="M100,20 Q140,40 160,80 Q180,120 160,160 Q140,180 100,180 Q60,180 40,160 Q20,120 40,80 Q60,40 100,20 Z" 
+                                  fill="none" 
+                                  stroke="black" 
+                                  stroke-width="2"
+                                  class="animate-pulse-custom"/>
+                            <circle cx="80" cy="70" r="8" fill="black" />
+                            <circle cx="120" cy="70" r="8" fill="black" />
+                            <path d="M70,110 Q100,130 130,110" fill="none" stroke="black" stroke-width="2" />
+                            <path d="M60,140 L70,155 L60,160" fill="black" />
+                            <path d="M140,140 L130,155 L140,160" fill="black" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journal Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl mb-12" style="font-weight: 400; line-height: 1.2;">From our journal</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Post 1 -->
+                <article class="group cursor-pointer">
+                    <div class="aspect-[4/3] overflow-hidden rounded-2xl relative">
+                        <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=800&h=600&fit=crop" 
+                             alt="Nature's Calling"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <!-- Text Box Overlay -->
+                        <div class="absolute bottom-6 left-6 right-6 bg-white rounded-2xl p-6 shadow-lg">
+                            <p class="text-xs font-semibold uppercase tracking-wider mb-2 text-gray-600" style="letter-spacing: 0.1em;">INTERVIEWS</p>
+                            <h3 class="text-2xl group-hover:text-green-900 transition-colors" style="font-weight: 400; line-height: 1.3;">Nature's Calling: What does a wine cellar smell like in autumn?</h3>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="group cursor-pointer">
+                    <div class="aspect-[4/3] overflow-hidden rounded-2xl relative">
+                        <img src="https://images.unsplash.com/photo-1591608971362-f08b2a75731a?w=800&h=600&fit=crop" 
+                             alt="Deep connection with animals"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <!-- Text Box Overlay -->
+                        <div class="absolute bottom-6 left-6 right-6 bg-white rounded-2xl p-6 shadow-lg">
+                            <p class="text-xs font-semibold uppercase tracking-wider mb-2 text-gray-600" style="letter-spacing: 0.1em;">PERSPECTIVES</p>
+                            <h3 class="text-2xl group-hover:text-green-900 transition-colors" style="font-weight: 400; line-height: 1.3;">On our deep connection with animals</h3>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="group cursor-pointer">
+                    <div class="aspect-[4/3] overflow-hidden rounded-2xl relative">
+                        <img src="https://images.unsplash.com/photo-1511497584788-876760111969?w=800&h=600&fit=crop" 
+                             alt="On the Trail of the Forest"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <!-- Text Box Overlay -->
+                        <div class="absolute bottom-6 left-6 right-6 bg-white rounded-2xl p-6 shadow-lg">
+                            <p class="text-xs font-semibold uppercase tracking-wider mb-2 text-gray-600" style="letter-spacing: 0.1em;">PERSPECTIVES</p>
+                            <h3 class="text-2xl group-hover:text-green-900 transition-colors" style="font-weight: 400; line-height: 1.3;">On the Trail of the Forests</h3>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-100 py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Newsletter Signup -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 pb-12 border-b border-gray-300">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-3xl mb-2" style="font-weight: 400;">Sign up for updates &</h3>
+                    <p class="text-3xl" style="font-weight: 400;">special deals and get</p>
+                    <p class="text-3xl" style="font-weight: 400;">10% off your next stay!</p>
+                </div>
+                <button class="bg-sky-300 text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-sky-300 transition-colors">
+                    Sign up for Newsletter →
+                </button>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <!-- Logo -->
+                <div class="col-span-2 md:col-span-1">
+                    <img src="logo2.png" alt="rasu-logo2" style="width: 20;height: 400;">
+                </div>
+
+                <!-- Help & Contact -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-sm uppercase">Help & Contact</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">FAQs</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Contact</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Packing list</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Waiting List</a></li>
+                    </ul>
+                </div>
+
+                <!-- Your Stay -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-sm uppercase">Your Stay</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Locations</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Guests' Favourites</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Culinary offers & experiences</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Last Minute Deals</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Dog-Cabins</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Cabins close to a farm</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Cabins by the lake</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Cabins by the sea</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Cabins in the forest</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Travel Companion</a></li>
+                    </ul>
+                </div>
+
+                <!-- Info & More -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-sm uppercase">Info</h4>
+                    <ul class="space-y-2 mb-6">
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Newsletter</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">About us</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Media</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Partnerships</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Become a host</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Sustainable travel</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Shootings & Productions</a></li>
+                    </ul>
+                    
+                    <h4 class="font-semibold mb-4 text-sm uppercase">More</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Gift cards</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Journal</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Careers</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Trainees & Students</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-green-900">Business Deals</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Button -->
+    <button class="fixed bottom-6 right-6 bg-green-900 text-white p-4 rounded-full shadow-lg hover:bg-green-800 transition-colors z-50">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+    </button>
+</body>
+</html>
